@@ -1,0 +1,45 @@
+{
+  "name": "halllagbe-backend",
+  "version": "1.0.0",
+  "main": "dist/server.ts",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.ts",
+    "lint": "eslint 'src/**/*.{ts,tsx}' --fix",
+    "format": "prettier --write 'src/**/*.{ts,tsx,json,md}'",
+    "prepare": "husky && chmod +x .husky/*",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix --no-warn-ignored",
+      "prettier --write"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.15.2",
+    "@typescript-eslint/eslint-plugin": "^8.31.0",
+    "@typescript-eslint/parser": "^8.31.0",
+    "dotenv": "^16.5.0",
+    "eslint": "^9.25.1",
+    "eslint-plugin-prettier": "^5.2.6",
+    "husky": "^9.1.7",
+    "jiti": "^2.4.2",
+    "lint-staged": "^15.5.1",
+    "nodemon": "^3.1.10",
+    "prettier": "^3.5.3",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongoose": "^8.14.0"
+  }
+}
