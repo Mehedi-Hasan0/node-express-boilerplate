@@ -2,6 +2,7 @@
 import express, { Request, Response, Application } from 'express';
 import config from './config';
 import cors, { CorsOptions } from 'cors';
+import globalErrorHandler from './app/middlewares/globalErrorHandler';
 
 const app: Application = express();
 const port = config.port;
@@ -19,6 +20,9 @@ app.use(cors(corsOptions));
 // parse body data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// global error handler
+app.use(globalErrorHandler);
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Welcome to Express & TypeScript Server');
