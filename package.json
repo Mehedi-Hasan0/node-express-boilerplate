@@ -1,5 +1,5 @@
 {
-  "name": "halllagbe-backend",
+  "name": "node-express-boilerplate",
   "version": "1.0.0",
   "main": "dist/server.ts",
   "scripts": {
@@ -17,10 +17,16 @@
       "prettier --write"
     ]
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "nodejs",
+    "boilerplate-templates",
+    "express.js",
+    "express-boilerplate",
+    "nodejs-boilerplate"
+  ],
+  "author": "Md.Mahedi Hasan",
   "license": "ISC",
-  "description": "",
+  "description": "Simple and easy to setup node.js, express.js boilerplate template. Built with typescript, node.js, express.js, eslint, prettier, husky and more.",
   "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.1",
