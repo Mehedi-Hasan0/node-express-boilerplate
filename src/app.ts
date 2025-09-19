@@ -3,6 +3,7 @@ import express, { Request, Response, Application } from 'express';
 import config from './config';
 import cors, { CorsOptions } from 'cors';
 import globalErrorHandler from './app/middlewares/globalErrorHandler';
+import routes from './app/routes';
 
 const app: Application = express();
 const port = config.port;
@@ -21,12 +22,16 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// global error handler
-app.use(globalErrorHandler);
-
+// routes
 app.get('/', (req: Request, res: Response) => {
   res.send('Welcome to Express & TypeScript Server');
 });
+
+// module routes
+app.use('/api/v1', routes);
+
+// global error handler
+app.use(globalErrorHandler);
 
 app.listen(port, () => {
   console.log(`Server is Fire at http://localhost:${port}`);

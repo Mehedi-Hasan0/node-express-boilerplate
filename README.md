@@ -106,16 +106,36 @@ yarn start
 
 ## Project Structure
 
+The `src` directory is the heart of the application, organized to promote a clean, scalable, and maintainable codebase. It follows a modular and layered architecture, separating concerns effectively.
+
 ```
 src/
-├── app/                  # Application-specific modules (e.g., middlewares, routes, controllers)
-│   └── middlewares/      # Express middleware (e.g., global error handler)
-├── config/               # Configuration files (e.g., environment variables)
-├── errors/               # Custom error classes and error handling utilities
-├── types/                # TypeScript custom type definitions
-├── app.ts                # Main Express application setup
-└── server.ts             # Server entry point, database connection, and graceful shutdown
+├── app/                  # Core application logic, including middlewares, routes, and feature modules.
+│   ├── middlewares/      # Express middleware functions (e.g., global error handler, request validation).
+│   ├── modules/          # Feature-based modules, each encapsulating a specific domain (e.g., 'user', 'product').
+│   │   └── [feature]/    # Individual feature module (e.g., 'example').
+│   │       ├── [feature].constant.ts   # Constants specific to the feature.
+│   │       ├── [feature].controller.ts # Handles HTTP requests and responses for the feature.
+│   │       ├── [feature].interface.ts  # TypeScript interfaces for the feature's data structures.
+│   │       ├── [feature].model.ts      # Mongoose schema and model definitions for the feature.
+│   │       ├── [feature].route.ts      # Defines API routes for the feature.
+│   │       ├── [feature].service.ts    # Contains business logic for the feature.
+│   │       ├── [feature].utils.ts      # Utility functions specific to the feature.
+│   │       └── [feature].validation.ts # Zod schemas for request validation.
+│   └── routes/           # Centralized route definitions, aggregating routes from all modules.
+├── app.ts                # Main Express application setup, configuring middleware, global routes, and error handling.
+├── config/               # Configuration files, managing environment variables and application settings.
+├── enum/                 # TypeScript enumerations for defining sets of named constants.
+├── errors/               # Custom error classes and utilities for consistent error handling across the application.
+├── events/               # (Optional) Directory for event-driven architecture components, if implemented.
+├── helpers/              # General utility functions and helper methods used across the application.
+├── lib/                  # External or custom library integrations.
+├── server.ts             # Application entry point, responsible for database connection, starting the server, and graceful shutdown.
+├── shared/               # Shared utilities, types, and functions used by multiple parts of the application (e.g., `catchAsync`, `sendResponse`).
+└── types/                # Global TypeScript custom type definitions and interfaces.
 ```
+
+For a detailed explanation of the `modules` structure and how to extend it, please refer to the [Module Structure Guide](module.md).
 
 ## Error Handling
 
